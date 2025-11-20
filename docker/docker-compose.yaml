@@ -12,11 +12,7 @@ services:
       - SURREAL_PASS=root
       - SURREAL_NAMESPACE=open_notebook
       - SURREAL_DATABASE=open_notebook
-      - OPENAI_API_BASE=${OPENAI_API_BASE}
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-dummy-key}
-      - DEFAULT_CHAT_MODEL=${DEFAULT_CHAT_MODEL}
-      - DEFAULT_TRANSFORMATION_MODEL=${DEFAULT_TRANSFORMATION_MODEL}
-      - DEFAULT_EMBEDDING_MODEL=${DEFAULT_EMBEDDING_MODEL}
+      - OLLAMA_API_BASE=${OLLAMA_API_BASE}
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     extra_hosts:
       - "host.docker.internal:host-gateway"
