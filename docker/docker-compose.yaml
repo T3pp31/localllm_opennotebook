@@ -1,0 +1,23 @@
+services:
+  open-notebook:
+    image: lfnovo/open_notebook:v1-latest-single
+    container_name: open-notebook
+    ports:
+      - "${APP_PORT:-8502}:8502"
+      - "5055:5055"
+    environment:
+      - API_URL=http://10.10.15.212:5055
+      - NEXT_PUBLIC_API_URL=http://10.10.15.212:5055
+      - SURREAL_USER=root
+      - SURREAL_PASS=root
+      - SURREAL_NAMESPACE=open_notebook
+      - SURREAL_DATABASE=open_notebook
+      - OPENAI_API_BASE=${OPENAI_API_BASE}
+      - OPENAI_API_KEY=${OPENAI_API_KEY:-dummy-key}
+      - DEFAULT_CHAT_MODEL=${DEFAULT_CHAT_MODEL}
+      - DEFAULT_TRANSFORMATION_MODEL=${DEFAULT_TRANSFORMATION_MODEL}
+      - DEFAULT_EMBEDDING_MODEL=${DEFAULT_EMBEDDING_MODEL}
+      - LOG_LEVEL=${LOG_LEVEL:-INFO}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
